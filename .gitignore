@@ -1,0 +1,14 @@
+# IDE (root-level)
+.idea/
+
+# Logs (root-level)
+logs/
+*.log
+
+# Uploaded resources (root-level directory)
+auraspark-note-file-uploads/*
+!auraspark-note-file-uploads/.gitkeep
+auraspark-note-file-uploads/avatar/*
+!auraspark-note-file-uploads/avatar/.gitkeep
+auraspark-note-file-uploads/image/*
+!auraspark-note-file-uploads/image/.gitkeep

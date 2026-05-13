@@ -1,0 +1,22 @@
+### Node ###
+node_modules/
+dist/
+
+### IDE ###
+.idea/
+*.iml
+.vscode/
+
+### OS ###
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+### Logs ###
+logs/
+*.log
+
+### Env ###
+.env
+.env.local
+*.env
