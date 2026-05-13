@@ -40,6 +40,12 @@ test-logs/
 ### Uploads ###
 uploads/
 
+### Config ###
+**/application.yml
+**/application-*.yml
+!**/application.yml.example
+!**/application-*.yml.example
+
 ### Env ###
 .env
 .env.local
