@@ -1,0 +1,49 @@
+### Maven ###
+target/
+*.jar
+*.war
+*.zip
+*.tar.gz
+*.rar
+.mvn/wrapper/maven-wrapper.jar
+
+### IDE ###
+.idea/
+*.iml
+*.iws
+*.ipr
+.settings/
+.project
+.classpath
+.factorypath
+.springBeans
+.sts4-cache
+.apt_generated
+.vscode/
+*.swp
+*.swo
+*~
+
+### OS ###
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+### Logs ###
+logs/
+*.log
+*.err
+
+### Test artifacts ###
+test-logs/
+
+### Uploads ###
+uploads/
+
+### Env ###
+.env
+.env.local
+*.env
+
+### Help ###
+HELP.md

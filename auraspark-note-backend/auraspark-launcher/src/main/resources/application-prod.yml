@@ -1,0 +1,24 @@
+server:
+  port: 443
+  ssl:
+    enabled: true
+    key-store: classpath:keystore.p12
+    key-store-type: PKCS12
+    key-store-password: ${SSL_KEY_PASSWORD}
+    key-alias: auraspark
+
+spring:
+  datasource:
+    password: ${DB_PASSWORD}
+  data:
+    redis:
+      password: ${REDIS_PASSWORD}
+
+jwt:
+  secret: ${JWT_SECRET}
+
+rate-limit:
+  default: 200
+  auth: 10
+  login-attempt: 3
+  lock-minutes: 30

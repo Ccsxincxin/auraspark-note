@@ -1,0 +1,121 @@
+spring:
+  application:
+    name: auraspark
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/auraspark_note
+    username: postgres
+    password: 123456
+    driver-class-name: org.postgresql.Driver
+
+  flyway:
+    enabled: false
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+      continue-on-error: false
+
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      timeout: 3000ms
+      lettuce:
+        pool:
+          max-active: 32
+          max-idle: 8
+          min-idle: 2
+
+  mail:
+    host: smtp.qq.com
+    port: 465
+    username: ${AURASPARK_MAIL_USERNAME}
+    password: ${AURASPARK_MAIL_PASSWORD}
+    properties:
+      mail.smtp.ssl.enable: true
+      mail.smtp.auth: true
+      mail.smtp.connectiontimeout: 10000
+      mail.smtp.timeout: 10000
+      mail.smtp.writetimeout: 10000
+
+  ai:
+    openai:
+      base-url: "https://api.openai.com"
+      api-key: "sk-default-api-key"
+      chat:
+        options:
+          model: "default-model"
+    chat:
+      memory:
+        repository:
+          jdbc:
+            initialize-schema: always
+
+mybatis-plus:
+  mapper-locations: classpath*:mapper/**/*.xml
+  type-aliases-package: com.auraspark.note.core.entity
+  configuration:
+    map-underscore-to-camel-case: true
+
+server:
+  port: 8080
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force-request: true
+      force-response: true
+    multipart:
+      max-file-size: 2MB
+      max-request-size: 2MB
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,loggers
+  endpoint:
+    health:
+      show-details: when-authorized
+  info:
+    env:
+      enabled: true
+
+auth:
+  password:
+    min-length: 8
+    require-uppercase: true
+    require-lowercase: true
+    require-digit: true
+    require-special: false
+
+upload:
+  dir: ${AURASPARK_UPLOAD_DIR:../auraspark-note-file-uploads}
+  max-size: 2MB
+
+jwt:
+  secret: "changeme-in-production-use-env-var-at-least-256-bits-long"
+  access-token-expiration: 7200000
+  refresh-token-expiration: 2592000000
+  refresh-token-expiration-remember-me: 2592000000
+  refresh-token-expiration-default: 43200000
+
+logging:
+  level:
+    AUDIT: INFO
+  file:
+    name: logs/auraspark.log
+  logback:
+    rolling:
+      max-history: 30
+      max-file-size: 10MB
+
+rate-limit:
+  default: 100
+  auth: 30
+  login-attempt: 5
+  lock-minutes: 15
+  window-seconds: 1
+  whitelist:
